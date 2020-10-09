@@ -16,7 +16,19 @@
 @section('classes_body'){{ ($auth_type ?? 'login') . '-page' }}@stop
 
 @section('body')
-    <div class="{{ $auth_type ?? 'login' }}-box">
+<div class="{{ $auth_type ?? 'login' }}-box">
+
+        @if(session('info'))
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="alert alert-danger" role="alert">
+                            <strong>{{ session('info')}}</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
 
         {{-- Logo --}}
         <div class="{{ $auth_type ?? 'login' }}-logo">

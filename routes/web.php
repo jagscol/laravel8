@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Auth\LoginController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +25,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Auth::routes();
 
+Route::get('login/{driver}', [LoginController::class, 'redirectToProvider']);
+Route::get('login/{driver}/callback', [LoginController::class, 'handleProviderCallback']);
+
 Route::get('/home', function() {
     return view('home');
 })->name('home')->middleware('auth');
+
+
